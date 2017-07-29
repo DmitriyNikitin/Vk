@@ -1,5 +1,6 @@
 package com.example.vk;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,40 +22,46 @@ public class WebActivity extends AppCompatActivity {
             version = "v=5.65",
             revoke = "revoke=1";
 
-     ListView listView;
-     public static ArrayList<UserInform> userInform = new ArrayList<UserInform>();
-     CustomListAdapter listAdapter;
-
-
+     public ListView listView;
+     public static ArrayList<UserInform> userInform;
+     public static Context context;
+     public static  MakeList makeList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
-
+        context = this;
 
 
         WebView webView = (WebView)findViewById(R.id.web);
         webView.setWebViewClient(new CustomWebViewClient());
+
         listView = (ListView)findViewById(R.id.list);
 
         String authorize = host_authorize + "?" + client_id + "&" + display + "&" + redirect_uri + "&" + scope + "&" + response_type + "&" + version + "&" + revoke;
 
            webView.loadUrl(authorize);
 
-        onPause();
+        userInform = new ArrayList<UserInform>();
+
+
+        makeList = new MakeList(context, listView);
+        Log.d("","");
+
+
 
     }
 
-    public void makeList(){
-        listAdapter = new CustomListAdapter(this, userInform);
-        listView.setAdapter(listAdapter);
-    }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
     }
+
+
+
 
 
 }

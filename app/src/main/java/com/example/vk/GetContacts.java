@@ -19,7 +19,7 @@ public class GetContacts extends AsyncTask<Void, Void , ArrayList<UserInform>> {
     private static final String TAG = "Error";
     public static ArrayList<UserInform> arrayList;
     public static ArrayList<UserInform> userInform = new ArrayList<UserInform>();
-    CustomListAdapter listAdapter;
+    public static CustomListAdapter listAdapter;
 
     @Override
     protected ArrayList<UserInform> doInBackground(Void... params) {
@@ -32,10 +32,8 @@ public class GetContacts extends AsyncTask<Void, Void , ArrayList<UserInform>> {
 
     @Override
     protected void onPostExecute(ArrayList<UserInform> result) {
-        WebActivity webActivity = new WebActivity();
         WebActivity.userInform = result;
-      //  Context cnt = webActivity;
-        webActivity.makeList();
-      //  MakeList makeList = new MakeList(cnt);
+        WebActivity.makeList.getList();
+
     }
 }

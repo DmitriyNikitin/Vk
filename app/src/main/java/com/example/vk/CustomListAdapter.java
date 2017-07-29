@@ -23,8 +23,11 @@ public class CustomListAdapter extends BaseAdapter {
      CustomListAdapter(Context context, ArrayList<UserInform> friend){
         this.context = context;
         this.friend = friend;
+
+
         lInflater = (LayoutInflater) this.context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+         Log.d("","");
     }
 
     @Override

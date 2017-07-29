@@ -14,14 +14,21 @@ import java.util.ArrayList;
 public class MakeList {
 
     public static ArrayList<UserInform> userInform = new ArrayList<UserInform>();
-    public CustomListAdapter listAdapter;
+    public CustomListAdapter adapter;
     Context cnt;
-    public MakeList(Context context){
-        this.cnt = context;
+    ListView listView;
 
-        listAdapter = new CustomListAdapter(cnt, userInform);
-        WebActivity webActivity = new WebActivity();
-       ListView listView = (ListView)webActivity.findViewById(R.id.list);
-        listView.setAdapter(listAdapter);
+    public MakeList(Context context, ListView listView){
+        this.cnt = context;
+        this.listView = listView;
+    }
+
+    public void getList(){
+
+        adapter = new CustomListAdapter(cnt, WebActivity.userInform);
+
+        listView.setAdapter(adapter);
+        Log.d("","");
+
     }
 }
