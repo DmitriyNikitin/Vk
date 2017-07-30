@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class MakeList {
 
-    public static ArrayList<UserInform> userInform = new ArrayList<UserInform>();
+     ArrayList<UserInform> userInform = new ArrayList<UserInform>();
     public CustomListAdapter adapter;
     Context cnt;
     ListView listView;
@@ -23,10 +23,13 @@ public class MakeList {
         this.listView = listView;
     }
 
+    public  void getArrayList(ArrayList<UserInform> array){
+        this.userInform = array;
+    }
+
     public void getList(){
 
-        adapter = new CustomListAdapter(cnt, WebActivity.userInform);
-
+        adapter = new CustomListAdapter(cnt, userInform);
         listView.setAdapter(adapter);
         Log.d("","");
 

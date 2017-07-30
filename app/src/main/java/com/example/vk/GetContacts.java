@@ -33,6 +33,7 @@ public class GetContacts extends AsyncTask<Void, Void , ArrayList<UserInform>> {
     @Override
     protected void onPostExecute(ArrayList<UserInform> result) {
         WebActivity.userInform = result;
+        WebActivity.makeList.getArrayList(result);
         WebActivity.makeList.getList();
 
     }
